@@ -1,11 +1,15 @@
-function Header() {
+function Header({ heroesNumber, sumLevelHeroes }) {
   return (
     <header>
       <div className="container">
-        {/* <img src="/src/assets/logo.png" alt="Logo RPG Heroes" /> */}
-        <div>
+        <div className="container-content">
           <h1>RPG Heroes</h1>
-          <p>Gère ton équipe de heros</p>
+          <p>Gère ton équipe de héros</p>
+        </div>
+        <div className="separator"></div>
+        <div className="container-content">
+          <p>Nombre de héros: {heroesNumber}</p>
+          <p>Niveau des héros : {sumLevelHeroes}</p>
         </div>
       </div>
     </header>
