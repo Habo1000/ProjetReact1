@@ -4,7 +4,16 @@
   padding: 1rem;
   text-align: center;
 }
-
+body {
+  box-sizing: border-box;
+}
+.separator {
+  width: 3rem;
+  height: 0.8rem;
+  border-radius: 0.4rem;
+  background-color: #333;
+  margin: 1rem auto;
+}
 header {
   /* max-height: 64px; */
 
@@ -27,12 +36,6 @@ header {
       }
     }
   }
-  .separator {
-    width: 3rem;
-    height: 0.8rem;
-    border-radius: 0.4rem;
-    background-color: #333;
-  }
 }
 
 .hero-list-container {
@@ -40,13 +43,14 @@ header {
   justify-content: center;
   flex-wrap: wrap;
   gap: 2rem;
+  margin-bottom: 1.6rem;
 }
 
 .hero-card {
   display: inline-block;
   padding: 1rem 0;
   width: 18rem;
-  transition: width 0.2s ease;
+
   .container {
     position: relative;
     padding: 1rem;
@@ -91,6 +95,7 @@ header {
         background-color: var(--action-color);
         color: #333;
         font-size: 1rem;
+        font-weight: 500;
         cursor: pointer;
         transition: all 0.2s ease;
       }
@@ -100,5 +105,42 @@ header {
       transform: translateY(-4px);
       box-shadow: 0 16px 40px oklch(0% 0 0/ 0.12);
     }
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 30rem;
+  margin: 3rem auto;
+  padding: 1rem;
+  background-color: #fff;
+  border: 1px solid oklch(90% 0 0);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 30px / 0.08;
+
+  p {
+    font-weight: bold;
+  }
+  input,
+  select,
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 1.4rem;
+    border-radius: 1.25rem;
+    width: 80%;
+    border: 1px solid oklch(80% 0 0);
+    background-color: #fff;
+    text-align: center;
+  }
+  input {
+    width: calc(80% - 2rem);
+  }
+  button {
+    width: 50%;
+    background-color: var(--action-color);
+    border: none;
   }
 }

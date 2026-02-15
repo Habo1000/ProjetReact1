@@ -1,8 +1,9 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { HeroList } from "./components/HeroList";
+import { AddHeroForm } from "./components/AddHeroForm";
 // import { HeroCard } from "./components/HeroCard";
 
 const initialHeroes = [
@@ -28,7 +29,10 @@ const initialHeroes = [
 ];
 
 function App() {
-  const [heroes, setHeroes] = useState(initialHeroes);
+  const [heroes, setHeroes] = useState(() => {
+    const savedHeroes = localStorage.getItem("heroes");
+    return savedHeroes ? JSON.parse(savedHeroes) : initialHeroes;
+  });
   function handleDelete(heroId) {
     setHeroes(heroes.filter((hero) => hero.id !== heroId));
   }
@@ -46,6 +50,12 @@ function App() {
       }),
     );
   }
+  function handleAddHero(hero) {
+    setHeroes([...heroes, hero]);
+  }
+  useEffect(() => {
+    localStorage.setItem("heroes", JSON.stringify(heroes));
+  }, [heroes]);
   return (
     <div>
       <Header
@@ -64,6 +74,7 @@ function App() {
           />
         </>
       )}
+      <AddHeroForm onAdd={handleAddHero} />
 
       <Footer />
     </div>
